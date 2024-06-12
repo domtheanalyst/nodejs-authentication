@@ -12,7 +12,7 @@ async function httpLogin(req, res) {
 
         //find user by email
 
-        const user = User.findOne({ email });
+        const user = await User.findOne({ email });
 
         if (!user) {
 
@@ -42,9 +42,8 @@ async function httpLogin(req, res) {
 
         // Respond with JWT
 
-        res.json({ accessToken })
-
-
+        res.json({ accessToken });
+       
 
     } catch (err) {
 

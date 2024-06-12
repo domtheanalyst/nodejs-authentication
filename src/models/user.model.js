@@ -5,16 +5,16 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
 
-    username: {type: String, required},
+    username: {type: String, required: true},
 
-    email: {type: String, required},
+    email: {type: String, required: true, unique:true},
 
-    password: {type: String, required}
+    password: {type: String, required: true}
 
 })
 
 
-userSchema.pre('save', async (next) => {
+userSchema.pre('save', async function(next){
 
     if(!this.isModified('password')) {
 
